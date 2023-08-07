@@ -78,5 +78,5 @@ After a successful build, you will be prompted for your DockerHub username and p
 
 If you're looking to explore the existing Docker images for Spark History Server, you can do so by following the link provided below:
 
-![Access Existing Docker Images for Spark History Server](https://hub.docker.com/repository/docker/rangareddy1988/spark-history-server)
+[Access Existing Docker Images for Spark History Server](https://hub.docker.com/repository/docker/rangareddy1988/spark-history-server)
 
