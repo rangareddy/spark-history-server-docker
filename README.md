@@ -1,39 +1,82 @@
-# Docker Image for Spark History Server
+# Spark History Server Docker Image: Troubleshoot Spark Applications Locally
 
-Docker image for Spark history Server
+<p align='center'>
+    <img src='https://github.com/rangareddy/ranga-logos/blob/main/frameworks/spark/spark_logo.png?raw=true'>
+</p>
 
-## Build and Publishing the Docker Image
+This Docker image is designed to simplify the process of troubleshooting Spark applications by allowing you to locally upload and examine event logs.
 
-### Step1: Export the DockerHub Username
-
-```sh
-export DOCKER_HUB_USER="<Your_Docker_Hub_Username>"
-```
-
-### Step2: Run the following command to build and publish
-
+### Step1: Set the Spark Version
 
 ```sh
-sh build_and_publish.sh 
+export SPARK_VERSION="3.3.2"
 ```
 
-After build is success, it will ask your dockerhub username and password. Please enter your username and password.
+The default Spark version is 3.3.2, but you can change it by exporting the above variable with your preferred version.
 
-### Step3: Run the docker image
+### Step2: Build the Docker Image
+
+To build the Docker image, execute the following command:
+
+```sh
+sh build.sh 
+```
+
+### Step3: Run the Docker Image
+
+Launch the Docker container using the following command:
 
 ```sh
 docker-compose up -d
 ```
 
-### Step4: Upload any event logs to `/tmp/spark/spark-events` directory. For example,
+### Step4: Upload Spark Event Logs
+
+Upload your Spark event logs to the `/tmp/spark/spark-events` directory. For instance:
 
 ```sh
-cp ~/Downloads/application_1662032454364_0049_1 /tmp/spark/spark-events
+cp application_1662032454364_0049 /tmp/spark/spark-events
 ```
 
-### Step5: Stop the docker container
+### Step5: Access Spark Event Logs from SHS UI
+
+Open a web browser and navigate to the following URL:
+
+```sh
+http://localhost:18080/
+```
+
+Here, you'll find the Spark History Server's user interface, enabling you to explore and analyze the uploaded event logs.
+
+### Step6: Stop the Docker Container
+
+When you're finished, stop the Docker container with this command:
 
 ```sh
 docker-compose down
 ```
+
+### Step7 (Optional): Publish the Docker Image into Docker hub
+
+If desired, you can publish your customized Docker image to Docker Hub:
+
+1. Export your DockerHub username:
+
+```sh
+export DOCKER_HUB_USER="<Your_Docker_Hub_Username>"
+```
+
+2. Build and publish the Docker image using the following command:
+
+```sh
+sh build_and_publish.sh
+```
+
+After a successful build, you will be prompted for your DockerHub username and password. Enter your credentials accordingly.
+
+### Step8 (Optional): Access Existing Docker Images for Spark History Server
+
+If you're looking to explore the existing Docker images for Spark History Server, you can do so by following the link provided below:
+
+![Access Existing Docker Images for Spark History Server](https://hub.docker.com/repository/docker/rangareddy1988/spark-history-server)
 
