@@ -22,7 +22,14 @@ To build the Docker image, execute the following command:
 sh build.sh 
 ```
 
-### Step3: Run the Docker Image
+### Step3: Create the Event log directory to upload event logs
+
+```sh
+mkdir -p /tmp/spark/spark-events
+mkdir -p /tmp/spark/spark-history-server-logs
+```
+
+### Step4: Run the Docker Image
 
 Launch the Docker container using the following command:
 
@@ -30,7 +37,7 @@ Launch the Docker container using the following command:
 docker-compose up -d
 ```
 
-### Step4: Upload Spark Event Logs
+### Step5: Upload Spark Event Logs
 
 Upload your Spark event logs to the `/tmp/spark/spark-events` directory. For instance:
 
@@ -38,7 +45,7 @@ Upload your Spark event logs to the `/tmp/spark/spark-events` directory. For ins
 cp application_1662032454364_0049 /tmp/spark/spark-events
 ```
 
-### Step5: Access Spark Event Logs from SHS UI
+### Step6: Access Spark Event Logs from SHS UI
 
 Open a web browser and navigate to the following URL:
 
@@ -48,7 +55,7 @@ http://localhost:18080/
 
 Here, you'll find the Spark History Server's user interface, enabling you to explore and analyze the uploaded event logs.
 
-### Step6: Stop the Docker Container
+### Step7: Stop the Docker Container
 
 When you're finished, stop the Docker container with this command:
 
@@ -56,7 +63,7 @@ When you're finished, stop the Docker container with this command:
 docker-compose down
 ```
 
-### Step7 (Optional): Publish the Docker Image into Docker hub
+### Step8 (Optional): Publish the Docker Image into Docker hub
 
 If desired, you can publish your customized Docker image to Docker Hub:
 
@@ -74,7 +81,7 @@ sh build_and_publish.sh
 
 After a successful build, you will be prompted for your DockerHub username and password. Enter your credentials accordingly.
 
-### Step8 (Optional): Access Existing Docker Images for Spark History Server
+### Step9 (Optional): Access Existing Docker Images for Spark History Server
 
 If you're looking to explore the existing Docker images for Spark History Server, you can do so by following the link provided below:
 
