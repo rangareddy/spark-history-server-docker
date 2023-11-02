@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export SPARK_VERSION=${SPARK_VERSION:-"3.3.2"}
+export SPARK_VERSION=${SPARK_VERSION:-"3.5.0"}
 export SPARK_HOME=${SPARK_HOME:-"/opt/spark"}
 export DOCKER_HUB_USER=${DOCKER_HUB_USER:-"rangareddy1988"}
 export DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME:-"spark-history-server"}
@@ -9,7 +9,7 @@ export LATEST_TAG_NAME="latest"
 export SHS_DOCKER_IMAGE_NAME_LATEST="${DOCKER_HUB_USER}/${DOCKER_IMAGE_NAME}:${LATEST_TAG_NAME}"
 export SHS_DOCKER_IMAGE_NAME_SPARK="${DOCKER_HUB_USER}/${DOCKER_IMAGE_NAME}:${SPARK_VERSION}"
 
-echo "Building the ${DOCKER_IMAGE_NAME} image using Spark version ${SPARK_VERSION}"
+echo "Building the Docker <${DOCKER_IMAGE_NAME}> image using Spark <${SPARK_VERSION}> version"
 
 # Building the Docker image
 docker build \
@@ -17,5 +17,4 @@ docker build \
 	-t ${SHS_DOCKER_IMAGE_NAME_SPARK} \
 	--build-arg spark_version=${SPARK_VERSION} \
 	--build-arg spark_home=${SPARK_HOME} \
-	-f Dockerfile . \
-	--load --progress=plain #--no-cache
+	-f Dockerfile . #--load --progress=plain --no-cache

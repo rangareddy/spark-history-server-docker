@@ -8,11 +8,11 @@ This Docker image is designed to simplify the process of troubleshooting Spark a
 
 ### Step1: Set the Spark Version
 
+By default Spark version is `3.5.0`, but you can change it by exporting the below variable with your preferred version.
+
 ```sh
 export SPARK_VERSION="3.3.2"
 ```
-
-The default Spark version is 3.3.2, but you can change it by exporting the above variable with your preferred version.
 
 ### Step2: Build the Docker Image
 

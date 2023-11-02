@@ -6,12 +6,14 @@ services:
     container_name: spark-history-server
     environment:
       - SPARK_HISTORY_UI_PORT=18080
-      - SPARK_DAEMON_MEMORY=4g
-      - SPARK_HISTORY_RETAINEDAPPLICATIONS=200
-      - SPARK_HISTORY_UI_MAXAPPLICATIONS=500
+      - SPARK_DAEMON_MEMORY=5g
+      - SPARK_HISTORY_RETAINEDAPPLICATIONS=100
+      - SPARK_HISTORY_UI_MAXAPPLICATIONS=50
+      - SPARK_HISTORY_STORE_MAXDISKUSAGE=20g
+      - SPARK_HISTORY_FS_LOG_DIRECTORY=/tmp/spark3-events
     ports:
      - 18080:18080
      - 4040:4040
     volumes:
-     - /tmp/spark/spark-events:/tmp/spark-events 
+     - /tmp/spark/spark-events:/tmp/spark3-events 
      - /tmp/spark/spark-history-server-logs:/var/log/spark
