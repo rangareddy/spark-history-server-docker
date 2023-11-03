@@ -11,6 +11,11 @@ export SHS_DOCKER_IMAGE_NAME_SPARK="${DOCKER_HUB_USER}/${DOCKER_IMAGE_NAME}:${SP
 
 echo "Building the Docker <${DOCKER_IMAGE_NAME}> image using Spark <${SPARK_VERSION}> version"
 
+if [[ $(uname -m) == "arm64" ]] && [[ "$1" == "run" || "$1" == "build" ]]; then
+	export DOCKER_DEFAULT_PLATFORM=linux/amd64
+	#--platform=linux/amd64,linux/arm64,windows/amd64,darwin/amd64 \
+fi
+
 # Building the Docker image
 docker build \
 	-t ${SHS_DOCKER_IMAGE_NAME_LATEST} \
